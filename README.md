@@ -27,8 +27,8 @@ Gera automaticamente a estrutura para a criação de aplicações web com PHP e 
   |- docker-compose.yml (arquivo já com as configurações iniciais)
   ```
  * Substitua os tokens **NOME-DO-PROJETO**, **BANCO** e **SENHA-ROOT**.
-  * **NOME-DO-PROJETO**: Define a forma com que os containeres serão nomeados;
-  * **BANCO**: Define o nome do banco gerado no MySQL
-  * **SENHA-ROOT**: Define a senha do root da instalação do MySql gerada no docker.
+   * **NOME-DO-PROJETO**: Define a forma com que os containeres serão nomeados;
+   * **BANCO**: Define o nome do banco gerado no MySQL
+   * **SENHA-ROOT**: Define a senha do root da instalação do MySql gerada no docker.
  * Execute o comando **[sudo docker-compose up -d](https://docs.docker.com/compose/reference/up/)**. Na primeira execução, as imagens serão baixadas, logo após, o site estará disponível em [http://localhost](http://localhost) porta 80.
  * Por fim, o MySQL deve ser referenciado pelo nome do container (definido como **NOME-DO-PROJETO-db**) e não por localhost.
