@@ -1,5 +1,11 @@
 # php-mysql-docker-generator
 Gera automaticamente a estrutura para a criação de aplicações web com PHP e MySQL com docker-compose
+
+## Requisitos
+ * Sistema que permita a execução de [shell scripts](https://pt.wikipedia.org/wiki/Shell_script)
+ * [Docker](https://www.docker.com/)
+ * [Docker Compose](https://docs.docker.com/compose/)
+
 ## Instruções de uso
  * Copie os arquivos do repositório para o diretório raíz dos seus sistemas. Recomendado: **/home/USUARIO/webroot** (caminho também descrito como **~/webroot**).
  A estrutura deve ser estar assim:
