@@ -1,0 +1,29 @@
+<NOME-DO-PROJETO>-db:
+  image: mariadb
+  container_name: <NOME-DO-PROJETO>-db
+  volumes_from:
+    - "mariadb-data"
+  ports:
+    - "3306"
+  environment:
+    - MYSQL_DATABASE=<TABELA-BANCO>
+    - MYSQL_ROOT_PASSWORD=<SENHA-ROOT>
+
+mariadb-data:
+  image: tianon/true
+  volumes:
+    - ./mysql:/var/lib/mysql
+
+<NOME-DO-PROJETO>-web: 
+  image: webgriffe/php-apache-base
+  container_name: <NOME-DO-PROJETO>-web
+  ports:
+    - "80:80"
+  links:
+    - <NOME-DO-PROJETO>-db
+  volumes:
+    - ./public/:/var/www/html
+  environment:
+    - MYSQL_HOST=<NOME-DO-PROJETO>-db
+    - APACHE_DOC_ROOT=/var/www/html/web
+
