@@ -52,7 +52,6 @@ cd $project_title
 mkdir public
 mkdir mysql
 touch docker-compose.yml
-chmod -R 777 .
 
 # Popula docker-compose e adiciona os dados fornecidos no programa
 cat ../docker-compose-sample.yml > docker-compose.yml
@@ -64,6 +63,12 @@ sed -i "s/SENHA-ROOT/$root_password/g" docker-compose.yml
 # Exibe estrutura de arquivos
 echo 'Estrutura criada com sucesso:'
 ls -la
+echo ''
+
+if [ $(docker ps -a -q -f name="$project_title-web") ] && [ $(docker ps -a -q -f name="$project_title-db") ]; then
+	echo 'Já existem containeres com o mesmo nome da estrutura criada!'
+	exit 1
+fi
 
 exit 0
 
