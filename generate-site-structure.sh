@@ -57,6 +57,9 @@ chmod -R 777 .
 # Popula docker-compose e adiciona os dados fornecidos no programa
 cat ../docker-compose-sample.yml > docker-compose.yml
 sed -i "s/NOME-DO-PROJETO/$project_title/g" docker-compose.yml
+sed -i "s/VIRTUAL-HOST/$virtual_host/g" docker-compose.yml
+sed -i "s/BANCO/$database_name/g" docker-compose.yml
+sed -i "s/SENHA-ROOT/$root_password/g" docker-compose.yml
 
 # Exibe estrutura de arquivos
 echo 'Estrutura criada com sucesso:'
