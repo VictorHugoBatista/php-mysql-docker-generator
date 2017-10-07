@@ -1,16 +1,14 @@
 #!/bin/bash
 
-# Lê o título do ambiente (usado no título do diretório
-# raíz da estrutura e nos títulos dos containeres) no
-# primeiro parâmetro passado na execução do arquivo,
-# se o parâmetro não for passado, o dado será pedido
-# dentro do programa
-if [ $# -lt 1 ]; then
-	echo 'Informe o título do ambiente:'
-	read project_title
-else
-	project_title=$1
+if [ $# -lt 4 ]; then
+	echo 'Informe título do projeto, virtual host, nome do banco e senha do root no comando'
+	echo 'Exemplo: ./generate-site-structure.sh projeto-teste test.dev base-teste root'
+	exit 1
 fi
+project_title=$1
+virtual_host=$2
+database_name=$3
+root_password=$4
 
 echo 'A seguinte estrutura será criada neste diretório:'
 echo " - $project_title"
@@ -20,8 +18,12 @@ echo ' |- docker-compose.yml (gera os containeres do apache/php e do mysql e os 
 echo ''
 echo 'Os seguintes containeres serão criados:'
 echo " - $project_title-web (php/apache)"
+echo "   - Virtual host: $virtual_host"
 echo " - $project_title-db (mysql)"
+echo "   - Nome do banco: $database_name"
+echo "   - Senha do root: $root_password"
 echo ''
+
 
 # Pede confirmação sobre a estrutura à ser criada
 continue_process=''
