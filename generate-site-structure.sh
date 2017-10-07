@@ -1,8 +1,15 @@
 #!/bin/bash
 
 if [ $# -lt 4 ]; then
-	echo 'Informe título do projeto, virtual host, nome do banco, senha do root e a versão do php (opcional) no comando'
-	echo 'Exemplo: ./generate-site-structure.sh projeto-teste test.dev base-teste root 5.6'
+	echo 'Informe os parâmetros:'
+	echo ' - título do projeto'
+	echo ' - virtual host'
+	echo ' - nome do banco'
+	echo ' - senha do root'
+        echo ' - versão do php (opcional)'
+	echo ' - raíz do apache à partir de /var/html/www (opcional)'
+	echo ''
+	echo 'Exemplo: ./generate-site-structure.sh projeto-teste test.dev base-teste root 5.6 public'
 	echo 'Ver mais em https://github.com/VictorHugoBatista/php-mysql-docker-generator'
 	exit 1
 fi
