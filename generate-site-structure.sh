@@ -18,6 +18,10 @@ echo ' |- public (raíz do apache do docker)'
 echo ' |- mysql (dados armazenados pelo mysql do docker)'
 echo ' |- docker-compose.yml (gera os containeres do apache/php e do mysql e os relaciona)'
 echo ''
+echo 'Os seguintes containeres serão criados:'
+echo " - $project_title-web (php/apache)"
+echo " - $project_title-db (mysql)"
+echo ''
 
 # Pede confirmação sobre a estrutura à ser criada
 continue_process=''
