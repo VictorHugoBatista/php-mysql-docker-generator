@@ -44,14 +44,13 @@ cd $dir_root
 mkdir public
 mkdir mysql
 touch docker-compose.yml
-cd ..
-chmod -R 777 $dir_root
+chmod -R 777 .
 
-cat docker-compose-sample.yml > $dir_root/docker-compose.yml
+cat ../docker-compose-sample.yml > docker-compose.yml
 
 # Exibe estrutura de arquivos
 echo 'Estrutura criada com sucesso:'
-ls -la $dir_root
+ls -la
 
 exit 0
 
