@@ -46,7 +46,9 @@ mkdir mysql
 touch docker-compose.yml
 chmod -R 777 .
 
+# Popula docker-compose e adiciona os dados fornecidos no programa
 cat ../docker-compose-sample.yml > docker-compose.yml
+sed -i "s/NOME-DO-PROJETO/$dir_root/g" docker-compose.yml
 
 # Exibe estrutura de arquivos
 echo 'Estrutura criada com sucesso:'
