@@ -1,17 +1,19 @@
 #!/bin/bash
 
-# Lê o nome do diretório raíz do primeiro parâmetro
-# passado na execução do arquivo, se o parâmetro não
-# for passado, o dado será pedido dentro do programa
+# Lê o título do ambiente (usado no título do diretório
+# raíz da estrutura e nos títulos dos containeres) no
+# primeiro parâmetro passado na execução do arquivo,
+# se o parâmetro não for passado, o dado será pedido
+# dentro do programa
 if [ $# -lt 1 ]; then
-	echo 'Informe o nome do diretório raíz:'
-	read dir_root
+	echo 'Informe o título do ambiente:'
+	read project_title
 else
-	dir_root=$1
+	project_title=$1
 fi
 
 echo 'A seguinte estrutura será criada neste diretório:'
-echo " - $dir_root"
+echo " - $project_title"
 echo ' |- public (raíz do apache do docker)'
 echo ' |- mysql (dados armazenados pelo mysql do docker)'
 echo ' |- docker-compose.yml (gera os containeres do apache/php e do mysql e os relaciona)'
@@ -33,14 +35,14 @@ fi
 # Verifica a existência de um arquivo com o nome
 # sugerido para ser o diretório raíz do site. Se
 # sim, para o programa com status 1.
-if [ -e $dir_root ]; then
-	echo "Um arquivo/diretório de nome $dir_root já existe!"
+if [ -e $project_title ]; then
+	echo "Um arquivo/diretório de nome $project_title já existe!"
 	exit 1
 fi
 
 # Gera a estrutura de arquivos e concede permissão
-mkdir $dir_root
-cd $dir_root
+mkdir $project_title
+cd $project_title
 mkdir public
 mkdir mysql
 touch docker-compose.yml
@@ -48,7 +50,7 @@ chmod -R 777 .
 
 # Popula docker-compose e adiciona os dados fornecidos no programa
 cat ../docker-compose-sample.yml > docker-compose.yml
-sed -i "s/NOME-DO-PROJETO/$dir_root/g" docker-compose.yml
+sed -i "s/NOME-DO-PROJETO/$project_title/g" docker-compose.yml
 
 # Exibe estrutura de arquivos
 echo 'Estrutura criada com sucesso:'
