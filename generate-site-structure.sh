@@ -9,6 +9,7 @@ project_title=$1
 virtual_host=$2
 database_name=$3
 root_password=$4
+php_version=`[ $5 ] && echo $5 || echo 'latest'`
 
 echo 'A seguinte estrutura será criada neste diretório:'
 echo " - $project_title"
@@ -18,6 +19,7 @@ echo ' |- docker-compose.yml (gera os containeres do apache/php e do mysql e os 
 echo ''
 echo 'Os seguintes containeres serão criados:'
 echo " - $project_title-web (php/apache)"
+echo "   - PHP $php_version"
 echo "   - Virtual host: $virtual_host"
 echo " - $project_title-db (mysql)"
 echo "   - Nome do banco: $database_name"
@@ -59,6 +61,7 @@ sed -i "s/NOME-DO-PROJETO/$project_title/g" docker-compose.yml
 sed -i "s/VIRTUAL-HOST/$virtual_host/g" docker-compose.yml
 sed -i "s/BANCO/$database_name/g" docker-compose.yml
 sed -i "s/SENHA-ROOT/$root_password/g" docker-compose.yml
+sed -i "s/PHP-VERSION/$php_version/g" docker-compose.yml
 
 # Exibe estrutura de arquivos
 echo 'Estrutura criada com sucesso:'
