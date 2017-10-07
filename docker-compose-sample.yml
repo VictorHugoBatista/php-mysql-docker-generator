@@ -26,5 +26,5 @@ NOME-DO-PROJETO-web:
   environment:
     - VIRTUAL_HOST=VIRTUAL-HOST
     - MYSQL_HOST=NOME-DO-PROJETO-db
-    - APACHE_DOC_ROOT=/var/www/html
+    - APACHE_DOC_ROOT=/var/www/html/APACHE-ROOT
 
