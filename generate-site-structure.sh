@@ -70,5 +70,8 @@ if [ $(docker ps -a -q -f name="$project_title-web") ] && [ $(docker ps -a -q -f
 	exit 1
 fi
 
+chmod -R 777 .
+docker-compose up -d
+
 exit 0
 
