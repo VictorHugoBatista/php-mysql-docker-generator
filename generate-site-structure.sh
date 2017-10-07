@@ -65,7 +65,7 @@ echo 'Estrutura criada com sucesso:'
 ls -la
 echo ''
 
-if [ $(docker ps -a -q -f name="$project_title-web") ] && [ $(docker ps -a -q -f name="$project_title-db") ]; then
+if [ $(docker ps -a -q -f name="$project_title-web") ] || [ $(docker ps -a -q -f name="$project_title-db") ]; then
 	echo 'Já existem containeres com o mesmo nome da estrutura criada!'
 	exit 1
 fi
