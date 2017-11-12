@@ -1,12 +1,13 @@
-script_file='/usr/bin/docker-gen-env'
+bin_path='/usr/bin'
+script_name='docker-gen-env'
+script_file="$bin_path/$script_name"
 
 if [ -e $script_file ]; then
-	echo 'O arquivo docker-gen-env será removido ao diretório /usr/bin'
+	echo "O arquivo $script_name será removido do diretório $bin_path"
 else
-	echo 'O arquivo docker-gen-env será adicionado ao diretório /usr/bin'
+	echo "O arquivo $script_name será adicionado ao diretório $bin_path"
 fi
 echo 'Digite "s" para prosseguir ou "n" para cancelar:'
-
 
 # Pede confirmação sobre a estrutura à ser criada
 continue_process=''
@@ -22,10 +23,10 @@ fi
 
 if [ -e $script_file ]; then
 	sudo rm $script_file
-	echo 'Comando docker-gen-env desinstalado com sucesso!'
+	echo "Comando $script_name desinstalado com sucesso!"
 else
 	sudo cp docker-gen-env.sh $script_file
 	sudo chmod +x $script_file
-	echo 'Comando docker-gen-env instalado com sucesso!'
+	echo "Comando $script_name instalado com sucesso!"
 fi
 
