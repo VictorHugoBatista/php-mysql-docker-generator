@@ -8,8 +8,8 @@ if [ $# -lt 4 ]; then
 	echo ' - senha do root'
         echo ' - versão do php (opcional)'
 	echo ' - raíz do apache à partir de /var/html/www (opcional)'
-	echo ''
-	echo 'Exemplo: ./generate-site-structure.sh projeto-teste test.dev base-teste root 5.6 public'
+	echo
+	echo "Exemplo: ${0##*/} projeto-teste test.dev base-teste root 5.6 public"
 	echo 'Ver mais em https://github.com/VictorHugoBatista/php-mysql-docker-generator'
 	exit 1
 fi
