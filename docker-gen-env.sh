@@ -1,7 +1,18 @@
 #!/bin/bash
 
 if [ $# -lt 4 ]; then
-	echo 'Informe os parâmetros:'
+	echo '        __                                             __'
+	echo '.-----.|  |--.-----.______.--------.--.--.-----.-----.|  |'
+	echo '|  _  ||     |  _  |______|        |  |  |__ --|  _  ||  |'
+	echo '|   __||__|__|   __|      |__|__|__|___  |_____|__   ||__|'
+	echo '|__|         |__|                  |_____|        |__|'
+	echo '    __              __                                                          __'
+	echo '.--|  |.-----.----.|  |--.-----.----.______.-----.-----.-----.-----.----.---.-.|  |_.-----.----.'
+	echo '|  _  ||  _  |  __||    <|  -__|   _|______|  _  |  -__|     |  -__|   _|  _  ||   _|  _  |   _|'
+	echo '|_____||_____|____||__|__|_____|__|        |___  |_____|__|__|_____|__| |___._||____|_____|__|'
+	echo '                                           |_____|'
+	echo
+	echo 'Parâmetros esperados:'
 	echo ' - título do projeto'
 	echo ' - virtual host'
 	echo ' - nome do banco'
@@ -9,9 +20,9 @@ if [ $# -lt 4 ]; then
         echo ' - versão do php (opcional)'
 	echo ' - raíz do apache à partir de /var/html/www (opcional)'
 	echo
-	echo "Exemplo: ${0##*/} projeto-teste test.dev base-teste root 5.6 public"
-	echo 'Ver mais em https://github.com/VictorHugoBatista/php-mysql-docker-generator'
-	exit 1
+	echo "Exemplo de comando completo: ${0##*/} projeto-teste test.dev base-teste root 5.6 public"
+	echo 'Repositório do projeto: https://github.com/VictorHugoBatista/php-mysql-docker-generator'
+	exit 0
 fi
 
 project_title=$1
