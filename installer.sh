@@ -38,8 +38,14 @@ if [ "$continue_process" = 'n' ]; then
 fi
 
 if [ -e $script_file ]; then
-	sudo rm $script_file
-	echo "Comando $script_name desinstalado com sucesso!"
+	if [ "$opcao" = '1' ]; then
+		sudo cp -rf docker-gen-env.sh $script_file
+		sudo chmod +x $script_file
+		echo "Comando $script_name atualizado com sucesso!"
+	else
+		sudo rm $script_file
+		echo "Comando $script_name desinstalado com sucesso!"
+	fi
 else
 	sudo cp docker-gen-env.sh $script_file
 	sudo chmod +x $script_file
