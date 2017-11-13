@@ -3,7 +3,23 @@ script_name='docker-gen-env'
 script_file="$bin_path/$script_name"
 
 if [ -e $script_file ]; then
-	echo "O arquivo $script_name será removido do diretório $bin_path"
+	echo 'Operações disponíveis:'
+	echo '1 - Atualizar'
+	echo '2 - Remover'
+	echo
+
+	# Pede confirmação sobre a estrutura à ser criada
+	opcao=''
+	while [ "$opcao" = '' ] || [ "$opcao" != '1' ] && [ "$opcao" != '2' ]; do
+		echo 'Entre com uma das opções para prosseguir:'
+		read opcao
+	done
+
+	if [ "$opcao" = '1' ]; then
+		echo "O arquivo $script_name será atualizado no diretório $bin_path"
+	else
+		echo "O arquivo $script_name será removido do diretório $bin_path"
+	fi
 else
 	echo "O arquivo $script_name será adicionado ao diretório $bin_path"
 fi
@@ -22,8 +38,14 @@ if [ "$continue_process" = 'n' ]; then
 fi
 
 if [ -e $script_file ]; then
-	sudo rm $script_file
-	echo "Comando $script_name desinstalado com sucesso!"
+	if [ "$opcao" = '1' ]; then
+		sudo cp -rf docker-gen-env.sh $script_file
+		sudo chmod +x $script_file
+		echo "Comando $script_name atualizado com sucesso!"
+	else
+		sudo rm $script_file
+		echo "Comando $script_name desinstalado com sucesso!"
+	fi
 else
 	sudo cp docker-gen-env.sh $script_file
 	sudo chmod +x $script_file
