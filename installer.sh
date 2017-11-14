@@ -1,6 +1,8 @@
 bin_path='/usr/bin'
 script_name='docker-gen-env'
 script_file="$bin_path/$script_name"
+compose_sample='docker-compose-sample.yml'
+compose_file="$bin_path/$compose_sample"
 
 if [ -e $script_file ]; then
 	echo 'Operações disponíveis:'
@@ -39,18 +41,18 @@ fi
 
 if [ -e $script_file ]; then
 	if [ "$opcao" = '1' ]; then
-		sudo cp -rf docker-compose-sample.yml $bin_path
-		sudo cp -rf docker-gen-env.sh $script_file
+		sudo cp -rf $compose_sample $bin_path
+		sudo cp -rf $script_name.sh $script_file
 		sudo chmod +x $script_file
 		echo "Comando $script_name atualizado com sucesso!"
 	else
-		sudo rm $bin_path/docker-compose-sample.yml
+		sudo rm $compose_file
 		sudo rm $script_file
 		echo "Comando $script_name desinstalado com sucesso!"
 	fi
 else
-	sudo cp docker-compose-sample.yml $bin_path
-	sudo cp docker-gen-env.sh $script_file
+	sudo cp $compose_sample $bin_path
+	sudo cp $script_name.sh $script_file
 	sudo chmod +x $script_file
 	echo "Comando $script_name instalado com sucesso!"
 fi
