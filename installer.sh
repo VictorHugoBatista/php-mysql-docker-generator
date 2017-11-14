@@ -39,14 +39,17 @@ fi
 
 if [ -e $script_file ]; then
 	if [ "$opcao" = '1' ]; then
+		sudo cp -rf docker-compose-sample.yml $bin_path
 		sudo cp -rf docker-gen-env.sh $script_file
 		sudo chmod +x $script_file
 		echo "Comando $script_name atualizado com sucesso!"
 	else
+		sudo rm $bin_path/docker-compose-sample.yml
 		sudo rm $script_file
 		echo "Comando $script_name desinstalado com sucesso!"
 	fi
 else
+	sudo cp docker-compose-sample.yml $bin_path
 	sudo cp docker-gen-env.sh $script_file
 	sudo chmod +x $script_file
 	echo "Comando $script_name instalado com sucesso!"
