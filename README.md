@@ -6,17 +6,20 @@ Gera automaticamente a estrutura para a criação de ambientes web PHP, Apache e
  * [Docker](https://www.docker.com/)
  * [Docker Compose](https://docs.docker.com/compose/)
 
-## Instruções de uso
- * Copie os arquivos do repositório para o diretório raíz dos seus ambientes. Recomendado: **~/webroot**.
- A estrutura deve ser estar assim:
+## Instalação
+ * Dê permissão de execução ao arquivo installer.sh;
  ```
- - home
- |- USUARIO
-   |- webroot
-     |- docker-compose-sample.yml
-     |- generate-site-structure.sh
+ chmod +x installer.sh
  ```
- * Dê permissão de execução ao arquivo generate-site-structure.sh (no diretório **webroot**, execute o comando **chmod +x generate-site-structure.sh**).
+ * Execute o arquivo por meio do comando **./installer.sh**;
+ * O script irá instalar o comando gerador de ambientes após uma mensagem de confirmação;
+ * Após isso o comando **docker-gen-env** estará disponível. O comando pode ser executado sem parãmetros para a exibição da ajuda.
+ 
+## Atualização / desinstalação
+* Com o comando já disponível no sistema, execute o arquivo installer.sh por meio de **./installer.sh**;
+* Selecione a opção **1** para atualizar o script com a versão no diretório atual ou a opção **2** para remover o script do sistema.
+
+## Documentação
  * Parâmetros obrigatórios:
     * Título do projeto, define o título do diretório raíz e o nome dos containeres;
     * Virtualhost apontando para o ambiente criado;
@@ -26,8 +29,8 @@ Gera automaticamente a estrutura para a criação de ambientes web PHP, Apache e
     * Versão do PHP utilizada no ambiente. Padrão: **latest** (ver https://hub.docker.com/r/webgriffe/php-apache-base/tags/);
     * Raíz do Apache: Diretório à partir de **/var/html/www** (diretório **public** na raíz da estrutura de diretórios criada).
  * Exemplo:
-    * **./generate-site-structure.sh projeto-teste test.dev base-teste root 5.6 public**
- * Ao executar o comando exbido acima, a seguinte estrutura será criada à partir do diretório atual (**você ainda pode prosseguir ou cancelar antes que a estrutura seja gerada**):
+    * **docker-gen-env projeto-teste test.dev base-teste root 5.6 public**
+ * Ao executar o comando exbido acima, a seguinte estrutura será criada à partir do seu diretório atual (**você ainda pode prosseguir ou cancelar antes que a estrutura seja gerada**):
   ```
   - projeto-teste
   |- public (raíz do apache do docker)
