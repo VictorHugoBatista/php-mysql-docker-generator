@@ -38,6 +38,7 @@ root_password=$4
 php_version=`[ $5 ] && echo $5 || echo 'latest'`
 apache_root=`[ $6 ] && echo "$6" || echo ''`
 
+echo -e "$BLUE"
 echo 'A seguinte estrutura será criada neste diretório:'
 echo " - $project_title"
 echo ' |- public (raíz do apache do docker)'
@@ -52,18 +53,18 @@ echo "   - Virtual host: $virtual_host"
 echo " - $project_title-db (mysql)"
 echo "   - Nome do banco: $database_name"
 echo "   - Senha do root: $root_password"
-echo ''
+echo -e "$RESET"
 
 # Pede confirmação sobre a estrutura à ser criada
 continue_process=''
 while [ "$continue_process" = '' ] || [ "$continue_process" != 's' ] && [ "$continue_process" != 'n' ]; do
-    echo 'Pressione "s" ou "n" para prosseguir:'
+    echo -e "Digite ${GREEN}s$RESET para prosseguir ou ${RED}n$RESET para cancelar: \c"
     read continue_process
 done
 
 # Para a execução caso a opção selecionada foi 'n'
 if [ "$continue_process" = 'n' ]; then
-    echo 'A operação foi cancelada!'
+    echo -e "${RED}A operação foi cancelada!${RESET}"
     exit 0
 fi
 
@@ -71,7 +72,7 @@ fi
 # sugerido para ser o diretório raíz do site. Se
 # sim, para o programa com status 1.
 if [ -e $project_title ]; then
-    echo "Um arquivo/diretório de nome $project_title já existe!"
+    echo -e "${RED}Um arquivo/diretório de nome $project_title já existe!${RESET}"
     exit 1
 fi
 
@@ -92,12 +93,13 @@ sed -i "s/PHP-VERSION/$php_version/g" docker-compose.yml
 sed -i "s/APACHE-ROOT/$apache_root/g" docker-compose.yml
 
 # Exibe estrutura de arquivos
+echo -e "$GREEN"
 echo 'Estrutura criada com sucesso:'
 ls -la
-echo ''
+echo -e "$RESET"
 
 if [ $(docker ps -a -q -f name="$project_title-web") ] || [ $(docker ps -a -q -f name="$project_title-db") ]; then
-    echo 'Já existem containeres com o mesmo nome da estrutura criada!'
+    echo -e "${RED}Já existem containeres com o mesmo nome da estrutura criada!${RESET}"
     exit 1
 fi
 
