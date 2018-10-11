@@ -1,6 +1,12 @@
 #!/bin/bash
 
+RED="\e[91m"
+GREEN="\e[92m"
+BLUE="\e[94m"
+RESET="\e[0m"
+
 if [ $# -lt 4 ]; then
+    echo -e "$BLUE"
     echo '        __                                             __'
     echo '.-----.|  |--.-----.______.--------.--.--.-----.-----.|  |'
     echo '|  _  ||     |  _  |______|        |  |  |__ --|  _  ||  |'
@@ -11,7 +17,7 @@ if [ $# -lt 4 ]; then
     echo '|  _  ||  _  |  __||    <|  -__|   _|______|  _  |  -__|     |  -__|   _|  _  ||   _|  _  |   _|'
     echo '|_____||_____|____||__|__|_____|__|        |___  |_____|__|__|_____|__| |___._||____|_____|__|'
     echo '                                           |_____|'
-    echo
+    echo -e "$RESET"
     echo 'Parâmetros esperados:'
     echo ' - título do projeto'
     echo ' - virtual host'
